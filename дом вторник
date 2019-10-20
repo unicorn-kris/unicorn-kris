@@ -1,0 +1,228 @@
+#include <iostream>; 
+#include <algorithm>; 
+#include <vector>; 
+#include <string>;
+#include <cmath>;
+#include <iomanip>;
+
+using namespace std;
+#define forn(i,n) for (long long int i=0; i<n; ++i)
+
+
+bool chetnechet(int x) {
+	return(x % 2);
+}
+
+
+	double pl(double b) {
+		return(b * b);
+}
+	double per(double b) {
+		return(4 * b);
+}
+
+	bool cor(double d) {
+		return (d >= 0);
+	}
+int main()
+{
+	setlocale(LC_ALL,"Russian");
+	/*
+	//1 2
+	cout << "введите радиус круга ";
+	int a;
+	cin >> a;
+	double pi = atan(1) * 4; //???
+	double pi1 = asin(0.5) * 6;
+	double pi2 = 333 / 106;
+	cout << fixed << setprecision(6) << "\nДлина окружности: " << 2 * pi * a << " " << 2 * pi1 * a << " "<<2 * pi2 * a;
+	cout << fixed << setprecision(6) << "\nПлощадь круга: " << a * pi * a << " " << a * pi1 * a << " " << a * pi2 * a;
+	cout << '\n';
+
+	//3 (sinn(x^3)+(cosy)^5)+((pi * ln x)/(корень(x+lg y)))
+	cout << "введите x и y ";
+	int x, y;
+	cin >> x >> y;
+	cout << fixed << setprecision(6) << (sin(pow(x, 3)) + pow(cos(y), 5)) + ( (pi1 * log(x)) / (sqrt(x + log10(y))) );
+	cout << '\n';
+
+	//4 площадь треугольника по 3 сторонам
+	cout << "введите длины сторон треугольника ";
+	int a1, b1, c1;
+	cin >> a1 >> b1 >> c1;
+	double p = (a1 + b1 + c1) / 2.0;
+	cout << fixed << setprecision(6) << sqrt(p * (p - a1) * (p - b1) * (p - c1));
+	cout << '\n';
+
+	//5
+	cout << "введите день недели (номер от 1 до 6) и знаменатель/числитель(0/1) ";
+	int s, s1;
+	cin >> s >> s1;
+	if ((s==1) && (s1==1))
+		cout << " Информатика и программирование практика \nВведение в специальность лекция \nАлгебра и геометрия лекция" ;
+
+	if ((s==1) && (s1==0))
+		cout << " Информатика и программирование практика \nВведение в специальность практика \nАлгебра и геометрия лекция";
+
+	if (s==5)
+		cout << " Информатика и программирование лекция\n Алгебра и геометрия практика\n Математический анализ лекция\n Иностранный язык" ;
+
+	if ((s==2) && (s1==1))
+		cout << " Нет пары\n Математический анализ практика \nРусский язык лекция \nИностранный язык" ;
+
+	if ((s==2) && (s1==0))
+		cout << " Нет пары\n Информатика и программирование практика \nРусский язык практика \nИностранный язык";
+
+	if ((s==6) && (s1==1))
+		cout << " Нет пары\n История лекция\n Физическая культура и спорт\n Математический анализ практика" ;
+
+	if ((s==6) && (s1==0))
+		cout << "Нет пары\n История лекция\n Физическая культура и спорт\n История практика" ;
+
+	if ((s == 3) || (s == 4))
+		cout << "нет пар";
+	//6 switch case
+	*/
+
+
+
+	
+	//2дз
+
+/*
+	cout << "3. вывести числа от 10 до введенного\n";
+	int a;
+	cin >> a;
+	if (a < 10)
+		for(int i = 10; i >= a; --i)
+		cout << i <<" ";
+	else
+		for (int i = 10; i <= a; ++i)
+			cout << i<< " ";
+
+	cout << "\n4. вывести номер первого макс числа из n введенных\n";
+	int n;
+	cin >> n;
+	int max = -1000000;
+	int mxnum = 0;
+	for (int i = 1; i <= n; ++i) {
+		int d;
+		cin >> d;
+		if (d > max) {
+			max = d;
+			mxnum = i;
+		}
+	}
+	cout << mxnum;
+
+	cout << "\n5. вывести номер первого отриц числа из n введенных\n";
+	
+	cin >> n;
+	int num = 0;
+	for (int i = 1; i <= n; ++i) {
+		int d;
+		cin >> d;
+		if (d <0) {
+			num = i;
+			break;
+		}
+	}
+	cout << num;
+	
+	cout << "\n6. вывести кол-во отриц до первого нуля из n введенных\n";
+	cin >> n;
+	int ss = 0;
+	for (int i = 1; i <= n; ++i) {
+		int d;
+		cin >> d;
+		if (d < 0) 
+			++ss;
+		if (d == 0)
+			break;
+	}
+	cout << ss;
+
+	cout << "\n1. введите координаты точки\n";
+	double x, y, xy;
+	cin >> x >> y;
+	xy = pow(x - 2, 2) + pow(y, 2);
+	if ((xy > 16) && (y > x * x))
+		cout << "yes";
+	else if ((xy < 16) || (y < x * x))
+		cout << "no";
+	else
+		cout << "граница";
+
+
+	cout << "\n2. введите координаты точки\n";
+	double x1, y1, xy1;
+	cin >> x1 >> y1;
+	xy = pow(x + 0.5, 2) + pow(y + 0.5, 2);
+	if ((xy > 1) && (x < 0) && (y < 0))
+		if (((x < -1) && (y < -1)) || ((x > -1) && (y < -1)) || ((x < -1) && (y > -1)))
+			cout << "yes";
+		else if ((xy < 1) && (x > 0) && (y > 0))
+			cout << "no";
+		else
+			cout << "граница";
+	*/
+/*
+int n;
+cin >> n;
+int s=0;
+for (int i = 0; i <= n; ++i) {
+	int b;
+	cin >> b;
+	if (b < 0) {
+		for (int j = i + 1; j <= n; ++j) {
+			cin >> b;
+			if (b >= 0)
+				s += b;
+			if (b < 0)
+				break;
+		}
+		break;
+	}
+}
+cout << s;
+*/
+
+
+
+//дано n квадратов, вывести для них p и s
+//функция возвращает t\f и меняет число на корень из него, если оно >=0, если неудача, то возвращает число неизменным (3 числа)
+
+
+
+
+
+//функция, возвращает символ y или n, четно ли число (да или нет)
+int s;
+cout << "введите число \n";
+cin >> s;
+if (chetnechet(s))
+cout << "n";
+else cout << "y";
+
+//дано n квадратов, вывести для них p и s
+int n;
+cout << "\nвведите кол-во квадратов \n";
+cin >>n;
+for (int i = 0; i < n; ++i) {
+	double b;
+	cin >> b;
+	cout << "площадь " <<pl(b) << " периметр " <<per(b)<< '\n';
+}
+
+//функция возвращает t\f и меняет число на корень из него, если оно >=0, если неудача, то возвращает число неизменным (3 числа)
+int a;
+cout << "введите кол-во чисел\n";
+cin >> a;
+for (int j = 0; j < n; ++j) {
+	double d;
+	cin >> d;
+	if (cor(d)) cout << sqrt(d)<<'\n';
+	else cout << d <<'\n';
+
+}
+	}
