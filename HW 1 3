@@ -1,0 +1,213 @@
+#include <iostream>; 
+#include <algorithm>; 
+#include <vector>; 
+#include <string>;
+#include <cmath>;
+#include <iomanip>;
+
+using namespace std;
+#define forn(i,n) for (long long int i=0; i<n; ++i)
+
+int main()
+{
+	setlocale(LC_ALL, "");
+
+
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
+	//1 дз
+/*
+cout << "ёлочка\n";
+cout << "   *" << endl;
+cout << "  /" << R"(\)" << endl;;
+cout << " //" << R"(\\)" << endl;
+cout << "///" << R"(\\\)" << endl;
+cout << "| || |"<<endl;
+cout << "o || o" << endl;
+
+
+cout << "ёлочка2.0\n";
+forn(i, 3) {
+	forn(j, 3 - i)
+		cout << " ";
+	forn(j, i + 1)
+		cout << "/";
+	forn(j, i + 1)
+		cout << R"(\)";
+	cout << '\n';
+}
+forn(i, 3)
+	cout << " ";
+cout << "||\n";
+
+
+cout << "квадратное уравнение\n";
+cout << "введите коэффициенты\n";
+double a, b, c;
+cin >> a >> b >> c;
+double d = b * b - (4 * a * c);
+if (d > 0) {
+	cout << ((-1) * b + sqrt(d)) / (2 * a) << endl;
+	cout << ((-1) * b - sqrt(d)) / (2 * a) << endl;
+}
+if (d < 0) {
+	cout << ((-1) * b) / 2 * a << endl;
+}
+if (d==0)
+	cout << "NO" << endl;
+
+
+cout << "обратная запись числа\n";
+cout << "введите число\n";
+int ss, sss;
+cin >> ss;
+sss = ss;
+cout << "1 способ\n";
+while (sss > 0) {
+	int d1 = sss % 10;
+	cout << d1;
+	sss /= 10;
+}
+cout << '\n' << "2 способ\n";
+vector <int> ss1;
+while (ss>0) {
+	ss1.push_back(ss % 10);
+	ss /= 10;
+}
+forn(i, ss1.size())
+	cout << ss1[i];
+
+
+
+cout << "\nобратная запись числа2.0\n";
+cout << "введите число\n";
+string str;
+cin >> str;
+for (int i = str.size(); i >= 0; --i)
+	cout << str[i];
+
+
+	int x, y;
+	cout << "практика 1. блок 1. 2 номер, введите x и y ";
+	cin >> x >> y;
+	cout << fixed<< setprecision(6)<< exp(-x) - cos(x) + sin(2 * x * y) << '\n';
+
+
+	cout << "практика 1. блок 2. 6 номер, введите катеты ";
+	int a, b;
+	cin >> a >> b;
+	cout << fixed << setprecision(6) << sqrt(pow(a, 2) + pow(b, 2)) << '\n';
+
+
+	cout << "практика 1. блок 3. 10 номер, введите двузначное число ";
+	int c, s=0;
+	cin >> c;
+	forn(i, 2) {
+		s += c % 10;
+		c /= 10;
+	}
+	if (s % 3 == 0)
+		cout << "YES";
+	else
+		cout << "NO";
+
+	//2 дз
+
+	
+	double x, y, xy;
+	cout << "практика 3. блок 1. задача 19, введите координаты точки ";
+	cin >> x >> y;
+	int r = 10;
+	xy = sqrt(x * x + y * y);
+	
+		if ((xy < r)&&(y<abs(x)))
+			cout << "Да";
+		else if ((xy > r) || (y > abs(x)))
+			cout << "Нет";
+		else
+			cout << "На границе";
+		cout << "\n";
+
+
+
+		int s;
+		cout << "практика 3. блок 2. задача 4, введите номер карты (в колоде 36 карт, Номера 6-14) ";
+		cin >> s;
+		switch (s) {
+		case 6:
+			cout << " шестерка";
+			break;
+		case 7:
+			cout << " семерка";
+			break;
+		case 8:
+			cout << " восьмерка";
+			break;
+		case 9:
+			cout << " девятка";
+			break;
+		case 10:
+			cout << " десятка";
+			break;
+		case 11:
+			cout << " валет";
+			break;
+		case 12:
+			cout << " дама";
+			break;
+		case 13:
+			cout << " король";
+			break;
+		case 14:
+			cout << " туз";
+			break;
+		}
+		
+
+
+		cout << "\n практика 3. блок 3. задача 7, ведите стоимость одного товара "<<'\n';
+		int st, ss = 1;
+		cin >> st;
+		cout << "Количество " << "Стоимость " << '\n';
+		cout << "1 while "<<'\n';
+		while (ss<=10) {
+			if (ss < 10) 
+				cout << ss * 10 << "          " << ss * st * 10 << '\n';
+				
+			else 
+				cout << ss * 10 << "         " << ss * st * 10 << '\n';
+			++ss;
+		}
+
+	
+		ss = 1;
+		cout << "2 do while "<<'\n';
+		do {
+			if (ss < 10) 
+				cout << ss * 10 << "          " << ss * st * 10 << '\n';
+				
+			else
+				cout << ss * 10 << "         " << ss * st * 10 << '\n';
+			++ss;
+		}
+			while (ss <=10);
+		
+
+		
+		cout << "3 for "<<'\n';
+		forn(i, 10) {
+			if (i < 9) 
+				cout << (i + 1) * 10 << "          " << (i + 1) * 10 * st << '\n';
+		
+		
+			else
+				cout << (i + 1) * 10 << "         " << (i + 1) * 10 * st << '\n';
+			
+		}
+
+		
+
+		*/
+
+}
