@@ -1,0 +1,117 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <cmath>
+#include <iomanip>
+using namespace std;
+/*
+#define forn3(a,n,m) for (int i=a; i<=n; i+=m)
+#define forn(i,n) for (int i=3; i<=n; ++i)
+//2 практика
+double rasst(double x, double y, double xx, double yy) {
+	return (pow(xx - x, 2) + pow(yy - y, 2));
+}
+bool sravnim(double a, double b) {
+	return (a < b);
+}
+
+//3 практика 5 раздел, задача 19
+double urav(double s) {
+	return (sqrt(pow(s, 3) - 1) / sqrt(pow(s, 2) - 1));
+}
+
+//3 практика, 6 раздел, задача 15
+int ix(int x) {
+	return(x - 1);
+}
+*/
+//5 практика, 3 раздел, задача 4
+double dd(double x, double e, int n) {
+	double s = 0;
+
+}
+int main() {
+	setlocale(LC_ALL, "rus");
+
+/*
+	cout << "2 практика, задача 18\nвведите координаты 3 точек\n";
+	double x1, y1, x2, y2, x3, y3;
+	cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
+	if (sravnim(rasst(x1, y1, x2, y2), rasst(x2, y2, x3, y3)))
+		if (sravnim(rasst(x1, y1, x3, y3), rasst(x1, y1, x2, y2)))
+			cout << "1 и 3";
+		else cout << "1 и 2";
+	else
+		if (sravnim(rasst(x2, y2, x3, y3), rasst(x3, y3, x1, y1)))
+			cout << "2 и 3";
+		else cout << "3 и 1";
+
+
+	cout << "\n3 практика, 5 раздел, задача 19\nвведите границы отрезка и шаг\n";
+	double a, b, h;
+	cin >> a >> b >> h;
+	forn3(a, b, h) {
+		if (sqrt(pow(i, 2) - 1) > 0)
+			cout << '\n' << urav(i);
+		else
+			cout << -1;
+	}
+
+
+	cout << "\n3 практика, 6 раздел, задача 15\nвведите x\n";
+	int a1, b1, h1;
+	cin >> a1 >> b1 >> h1;
+	forn3(a, b, h) {
+		if (ix(i) == 1)
+			cout << 0;
+		if (ix(i) < 1)
+			cout << 1;
+		if (ix(i) > 1)
+			cout << -1;
+	}
+
+
+	cout << "\n4 практика, задача 16\nвведите номер элемента последовательности\n";
+	double a11 = 1, a22 = 2, aaa;
+	cin >> aaa;
+	cout << 1 << " " << 2 << " ";
+	forn(i, aaa) {
+		cout << fixed<<setprecision(6)<<(i * a11 - a22) / (i + 1) << " ";
+		a11 = a22;
+		a22 = (i * a11 - a22) / (i + 1);
+	}
+*/
+
+	cout << "\n 5 практика, 1 блок, 4 задача\n";
+	cout << "введите количество элементов последовательности";
+	int n1;
+	double s1 = 1;
+	cin >> n1;
+	for (int i = 2; i <= n1; ++i) {
+		s1 += 1.0 / i;
+	}
+	cout << s1;
+
+	cout << "\n 5 практика, 2 блок, 4 задача\n";
+	int n2, x;
+	double s2 = 0;
+	cin >> n2 >> x;;
+	for (int i = 1; i <= n2; ++i) {
+		s2 += pow(x, 2*(i-1)) /pow (2- 4*(i-1),2);
+	}
+	cout << s2;
+
+	cout << "\n 5 практика, 3 блок, 4 задача\n";
+	int e3, i3=1;
+	double a = 1.0 / 2, s=0;
+	cin >> e3;
+	while (fabs(a) >= e3) {
+		s += a;
+		++i3;
+		a = 1.0 / (i3 * (i3 + 1));
+	}
+	cout << s;
+
+	cout << "\n 5 практика, 4 блок, 4 задача\n";
+	
+}
