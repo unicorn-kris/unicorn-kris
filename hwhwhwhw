@@ -1,0 +1,51 @@
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+
+using namespace std;
+
+int main() {
+	setlocale(LC_ALL, "rus");
+	cout << "вывод статического массива\n";
+	int a[100];
+	cout << "введите количество элементов и элементы \n";
+	int n;
+	cin >> n;
+	for (int i = 0; i < n; ++i)
+		cin >> a[i];
+	for (int i = 0; i < n; ++i) {
+		if (i == n - 1)
+			cout << a[i] << ".";
+		else
+			cout << a[i] << ", ";
+	}
+
+	cout << "\nработа со статическим массивом\n";
+	if (n % 2 == 0) {
+		int t = a[(n / 2) - 1];
+		a[n / 2 - 1] = a[n / 2];
+		a[n / 2] = t;
+	}
+		
+	else
+		a[n / 2] = a[n / 2] * 2;
+	for (int i = 0; i < n; ++i) {
+		if (i == n - 1)
+			cout << a[i] << ".";
+		else
+			cout << a[i] << ", ";
+	}
+
+	cout << "\nвывод динамического массива\n";
+	cout << "введите количество элементов и элементы \n";
+	int n1;
+	cin >> n1;
+	int* b = new int[n1];
+	for (int i = 0; i < n1; ++i)
+		cin >> b[i];
+	b[n1 - 1] = b[n1 - 2] = b[n1 - 3] = -1;
+	for (int i = n1-1; i >= 0; --i)
+		cout << b[i] << " ";
+
+}
+
