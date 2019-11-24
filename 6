@@ -1,0 +1,237 @@
+
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+using namespace std;
+#define forn(i,n) for(int i=0; i<n; ++i)
+int main() {
+	setlocale(LC_ALL, "rus");
+	cout << "6.3, 12 номер, введите размер мастрицы и элементы\n";
+	int n;
+	cin >> n;
+	int** a = new int* [n];
+	forn(i, n)
+		a[i] = new int[n];
+	forn(i, n)
+		forn(j, n)
+		cin >> a[i][j];
+	cout << " исходная матрица\n";
+	forn(i, n) {
+		forn(j, n)
+			cout << a[i][j] << " ";
+		cout << "\n";
+	}
+	int max, s=0;
+	forn(i, n) {
+		max = a[i][0];
+		forn(j, n)
+			if (a[i][j] > max)
+				max = a[i][j];
+		s += max;
+	}
+	cout << "норма матрицы (по строке): " << s;
+}
+
+
+
+
+
+
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+using namespace std;
+#define forn(i,n) for(int i=0; i<n; ++i)
+int main() {
+	setlocale(LC_ALL, "rus");
+	cout << "6.4, 5 номер, введите размер мастрицы и элементы\n";
+	int n;
+	cin >> n;
+	int** a = new int* [n];
+	forn(i, n)
+		a[i] = new int[n];
+	forn(i, n)
+		forn(j, n)
+		cin >> a[i][j];
+	cout << "\nведите вектор\n";
+	int* x = new int[n];
+	forn(i, n)
+		cin >> x[i];
+	int s = 0;
+	forn(i, n) {
+		forn(j, n) {
+			s += a[i][j] * x[j]; //сумма произведений элементов каждой строки на соответсвующие элементы столбца (вектора, т.к. он представлен в виде столбца) 
+		}
+		cout << s << "\n";	
+		s = 0;
+	}
+}
+
+
+
+
+
+
+
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+using namespace std;
+#define forn(i,n) for(int i=0; i<n; ++i)
+int main() {
+	setlocale(LC_ALL, "rus");
+	cout << "6.5, 7 номер, введите размер массива и элементы\n";
+	int n;
+	cin >> n;
+	int* a = new int[n + 1];
+	forn(i, n)
+		cin >> a[i];
+	cout << "введите число\n";
+	int p;
+	cin >> p;
+	int mm = 0;
+	forn(i, n)
+		if (a[i] > 0)
+			mm = i;
+	int t, tt;
+	if (n - mm > 2) {
+		t = a[mm + 1]; //сохраняю первый элемент после последнего положительного
+		for (int i = 2; i < n - mm; ++i) {
+			tt = a[mm + i];//следующий за переставляемым элементом сохраняю
+			a[mm + i] = t;//сохраненный предыдущий становится на новое место
+			t = tt;//резервирую тот элемент, чье место заняли
+			a[mm + 1] = p;//пустое место после 1-го прохода заполняю новым числом
+			cout << t << "\n";
+		}
+		a[n] = t;//последний сохраненный элемент добавляю в конец
+	}
+	else if (n-mm==1) a[n] = p;//если последний положительный последний по счету, то просто прибавляю в конец один элемент
+	else if (n - mm == 2) { //если последний положительный предпоследний по счету, то на его место ставлю новый, а сам элемент ставлю последним
+		t = a[n - 1];
+		a[n - 1] = p;
+		a[n] = t;
+	}
+	forn(i, n + 1)
+		cout << a[i] << " ";
+}
+
+
+
+
+
+
+
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+using namespace std;
+#define forn(i,n) for(int i=0; i<n; ++i)
+int main() {
+	setlocale(LC_ALL, "rus");
+	cout << "6.5, 7 номер, введите размер массива и элементы\n";
+	int n;
+	cin >> n;
+	int* a = new int[n + 1];
+	forn(i, n)
+		cin >> a[i];
+	cout << "введите число\n";
+	int p;
+	cin >> p;
+	int mm = 0;
+	forn(i, n)
+		if (a[i] > 0)
+			mm = i;
+	for (int i = n; i > mm+1; --i)
+		a[i] = a[i - 1];
+	a[mm + 1] = p;
+	forn(i, n + 1)
+		cout << a[i] << " ";
+}
+
+
+
+
+
+
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+using namespace std;
+#define forn(i,n) for(int i=0; i<n; ++i)
+int main() {
+	setlocale(LC_ALL, "rus");
+	cout << "6.5, 11 номер, введите размер массива и элементы\n";
+	int n;
+	cin >> n;
+	int* a = new int[n];
+	forn(i, n)
+		cin >> a[i];
+	forn(i, n) {
+		int b = 0;
+		int m = a[i];
+		while (m>0)
+		{
+			int s = m % 10;
+			int ss = m /10 % 100;
+			if (s!=0 && s!= ss && ss!=0)
+				++b;
+			m /= 10;
+		}
+		if (b != 0) {
+			for (int j = i; j < n-1; ++j)
+				a[i] = a[i + 1];
+			--n;
+			--i;
+		}
+		b = 0;
+	}
+	forn(i, n)
+		cout << a[i] << " ";
+}
+
+
+
+
+
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+using namespace std;
+#define forn(i,n) for(int i=0; i<n; ++i)
+int main() {
+	setlocale(LC_ALL, "rus");
+	cout << "6.6, 9 номер, введите размер массива и элементы\n";
+	int n, m;
+	cin >> n>>m; 
+	int** a = new int* [n];
+	for (int i = 0; i < n; ++i)
+		a[i] = new int[m];
+	forn(i, n) 
+		forn(j, m)
+			cin >> a[i][j];
+	int b;
+	forn(j, m) {  //рассматриваю каждый столбец
+		b = 0;
+		forn(i, n) {
+			if (a[i][j] % 2 != 0) { //считаю количество нечетных элементов
+				++b;
+			}
+			if (i == n - 1 && b % 2 == 0 && b != 0) { // если нечетные элементы есть и их кол-во четное, то сдвигаю массив вправо на один столбец
+					for (int k = j; k < m-1; ++k) {
+						forn(k1, n)
+							a[k1][k] = a[k1][k + 1];
+					}
+			}
+		}
+		if (b % 2 == 0 && b != 0) { //избавляюсь от последнего столбца, который остается пустым и рассматриваю новый столбец, который встал на место удаленного
+			--j;
+			--m;
+		}
+	}
+	cout << "Массив без строк, содержащих четное количество нчеетных элементов: \n";
+	forn(i, n) {
+		forn(j, m)
+			cout << a[i][j] << " ";
+		cout << "\n";
+	}
+}
