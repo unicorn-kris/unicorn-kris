@@ -1,0 +1,60 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+#define forn(i,n) for (int i = 0; i < n; ++i)
+int main() {
+	
+	cout << "1\n";
+	int n1;
+	cin >> n1;
+	int* a1 = new int[n1];
+	forn(i, n1)
+		cin >> a1[i];
+	int max1 = -10000001;
+	forn(i, n1) 
+		if (a1[i] > max1)
+			max1 = a1[i];
+	int d=0;
+	forn(i, n1)
+		if (a1[i] == max1)
+			++d;
+	forn(i, n1) {
+		if (a1[i] == max1)
+			a1[i] = d;
+		cout << a1[i] << " ";
+	}
+
+
+	cout << "\n2\n";
+	int n2;
+	cin >> n2;
+	int* a2 = new int[n2];
+	forn(i, n2)
+		cin >> a2[i];
+	forn(i,n2)
+		if (i % 2 != 0) {
+			a2[i] += a2[i - 1];
+		}
+	forn(i, n2) 
+		cout << a2[i] << " ";
+	
+	cout << "\n3\n";
+	int n3, n4;
+	cin >> n3;
+	int* a3 = new int[n3];
+	
+	forn(i, n3)
+		cin >> a3[i];
+	cin >> n4;
+	int* b3 = new int[n4];
+	forn(i, n4)
+		cin >> b3[i];
+	forn(i, n4) {
+		forn(j, n3) {
+			if (j == b3[i])
+				a3[j] = 0;
+		}
+	}
+	forn(i, n3)
+		cout << a3[i] << " ";
+}
