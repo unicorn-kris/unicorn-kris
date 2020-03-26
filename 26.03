@@ -1,0 +1,81 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+class Triangle {
+private:
+	int a, b, c;
+public:
+	Triangle() {
+		a = 0;
+		b = 0;
+		c = 0;
+	}
+	Triangle(int a, int b, int c) {
+			this->a = a;
+			this->b = b;
+			this->c = c;
+	}
+	Triangle(const Triangle& tt) {
+			this->a = tt.a;
+			this->b = tt.b;
+			this->c = tt.c;
+	}
+	Triangle(int s) {
+			a = s;
+			b = s;
+			c = s;
+	}
+	void p(){
+		cout << "\nP = " << a + b + c;
+	}
+	void s() {
+		double pp = (a + b + c) *1.0 / 2, ss = sqrt(pp * (pp - a) * (pp - b) * (pp - c));
+		cout << "\nS = " << ss;
+	}
+	void out() {
+		cout <<"\n"<< a << " " << b << " " << c;
+	}
+};
+
+class Circle {
+private:
+	double r, pi;
+public:
+	Circle() {
+		r = 0;
+		pi = asin(0.5) * 6;
+	}
+	Circle(int r) {
+		this->r = r;
+	}
+	Circle(const Circle& c) {
+		r = c.r;
+	}
+	void d() {
+		double d = 2 * pi * r;
+		cout << "\nD = " << d;
+	}
+	void out() {
+		cout << "\nr = " << r;
+	}
+};
+int main() {
+	Triangle t1(3, 2, 2);
+	t1.out();
+	t1.p();
+	t1.s();
+	Triangle t2(4);
+	t2.out();
+	t2.s();
+	Triangle t3 = t1;
+	t3.out();
+	t3.p();
+	cout << "\n";
+	Circle c1(2);
+	c1.out();
+	c1.d();
+	Circle c2 = c1;
+	c2.out();
+
+}
