@@ -1,3 +1,4 @@
+
 class SimpleVector {
 private:
 	int  size;
@@ -27,6 +28,9 @@ public:
 				return i;
 			else
 				return -1;
+	}
+	int operator [](int x) {
+		return array[x];
 	}
 	void remove() {
 		for (int i = 1; i < ssize(); ++i)
