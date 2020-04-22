@@ -1,0 +1,195 @@
+1 2 3
+class SimpleVector {
+	private:
+		int  size;
+		int* array;
+	public:
+		SimpleVector() {
+				array[0] = 0;
+				size = 0;
+		}
+		SimpleVector(int n) {
+			array = new int[n];
+			size = n;
+		}
+		~SimpleVector() {
+			delete[] array;
+		}
+		int ssize() {
+			return size;
+		}
+		void push_back (int x) {
+				size = ssize() + 1;
+			array[ssize()] = x;
+		}
+		int find(int x) {
+			for (int i = 1; i <= ssize(); ++i)
+				if (array[i] == x)
+					return i;
+				else
+					return -1;
+		}
+		int operator [](int x) {
+			return array[x];
+		}
+		void remove() {
+			for (int i = 1; i < ssize(); ++i)
+				array[i] = array[i + 1];
+			size = ssize() - 1;
+		}
+		bool insert_after(int y) {
+			if (find(y) != -1) {
+				return true;
+				size = ssize() + 1;
+				array[size] = 0;
+				for (int j = size; j > find(y); --j)
+					array[j] = array[j - 1];
+			}
+			else 
+				return false;
+	
+
+		}
+Void zero_plus_min() {
+Int min = array[0];
+Int a=1;
+While (find(a)>min) {
+++a;
+}
+Min = array[a];
+Insert_after(array[a]);
+Insert_after(array[a-1]);
+}
+	};
+	
+
+	
+
+	template <typename T>
+	class List
+	{
+	
+
+		struct Item
+		{
+			T inf;
+			Item* next;
+			Item(T x, Item* ref = nullptr) : inf(x), next(ref) {}
+		} *first = nullptr, * last = nullptr;
+	
+
+	public:
+		void add(T x)
+		{
+			Item* item = new Item(x);
+			if (last != nullptr)
+				last->next = item;
+			last = item;
+			if (first == nullptr)
+				first = last;
+		}
+	
+
+		void print()
+		{
+			for (Item* t = first; t != nullptr; t = t->next)
+				cout << t->inf << " ";
+			cout << endl;
+		}
+	
+
+		void doubleX(T x)
+		{
+			for (Item* t = first; t != nullptr; t = t->next)
+			{
+				if (t->inf == x)
+				{
+					Item* newItem = new Item(x, t->next);
+					t->next = newItem;
+					t = t->next;
+				}
+			}
+		}
+	
+
+		void coutt(int x) {
+			for (int i = first; i!=nullprt; i = i->next)
+				if (i->inf == x)
+				{
+					cout << i->inf << " ";
+					i = i->next;
+				}
+				else
+					cout << i->inf << " ";
+		}
+	
+
+		void remove(int x) {//удаление всех элементов перед первым встречным заданным
+			for (int i = first; i != nullprt; i = i->next)
+				if (i->inf == x)
+				{
+					for (int k = 0; k < i; ++k) {
+						Item* neww;
+						--size;
+							neww = head;
+							head = head->next;
+				}
+					i == nullprt;
+		}
+		}
+int ssize() {//размер списка
+		return size;
+	}
+int get(int a) {//возвращает значение элемента под индексом a
+		element* s = find(a);
+		int i = s->x; //i равен эл по адресу s
+		return i;
+	}
+void insert(int el, int a) {//вставка элемента el в позицию a//создаем элемент
+		if ((a < 1) || (a > size + 1)) {
+
+		}
+		else {
+			element* newel = new element(el); //выд память под новый эл
+			size = ssize() + 1;
+			if (a == 1) {//вставляем 1 элемент
+				newel->next = head; //Указываем, что след. элемент это объект по адресу Head
+				head = newel; // head =  нового
+			}
+			else {//вставляем остальные элементы
+				element* pr = find(a - 1); //элемент в нужной позиции
+				newel->next = pr->next; // адрес следующего после нового = адресу следующего после нужного
+				pr->next = newel; //Указываем, что след. элемент это объект по адресу newel
+			}
+		}
+	}
+Void min_plus_zero(){
+int min = get(1);
+int i=2;
+while (get(i)<min){
+++i;
+Insert(0, i-1);
+Insert(0, i+2);
+}
+	};
+
+работа simple vector O(n)
+работа list O(n^2)
+работа vector O(n)
+vector: (пусть имеется vector <int> a)
+int min = a[0];
+int j=0;
+for (int i=1; i< a.size(); ++i){
+if a[i]<min;
+min=a[i];
+ j=i;
+}//o(n)
+int n = s.size();
+for (int i=n+1; i>j; --i){
+a[i]=a[i-1];
+} //o(n)
+a[j-1]=0;
+for (int i=n+1; i>j+2; --i){
+a[i]=a[i-1];
+}//o(n)
+a[j+2]=0;
