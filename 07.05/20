@@ -1,0 +1,128 @@
+1.#include <iostream>
+#include <fstream>
+using namespace std;
+
+ifstream in("input.txt");
+ofstream out("output.txt");
+
+class stack {
+	struct element {
+		char x;
+		element* next; //указ на след эл
+		element(int a, element *y) : x(a), next(y) {} //констр элемента
+	};
+	element* head;//ук на вершину
+public:
+	stack(): head(0){}
+	void inn(int num) {
+		head = new element(num, head); //адрес головы равен новому элементу
+	}
+	int get()
+	{
+		if (!empty()) {
+			element* neww = head; //адрес нового равен адресу головы
+			int i = neww->x; //временный элемент равен значению нового
+			head = neww->next; //адрес головы меняется на следующий после нового
+			delete neww; //элемент удаляется
+			return i; 
+		}
+	}
+	bool empty() {
+		return head == 0;
+	}
+};
+ 
+int main() {
+	stack t1, t2;//2 стека, в 1 запись из файла, во 2 результат, если элемент из 1 стека четный, во 2 стек он записывается два раза подряд
+	char i;
+	while (in >> i) {
+		t1.inn(i);
+	}
+	out << "\n";
+  int ee=0;
+	while (!t1.empty()) {
+		i = t1.get();
+    if (i != '#')
+		  t2.inn(i);
+		else{
+      while (t1.get()=='#')
+        ++ee;
+       for (int i=0; i<ee; ++i)
+       t1.get();
+      }
+			t2.inn(i);
+	}
+	out << "stack 2: ";
+	while (!t2.empty()) {
+		out << t2.get() << " ";
+	}
+}
+
+3.
+#include <iostream>
+#include <stack>
+#include <string>
+#include<fstream>
+#include <time.h>
+
+using namespace std;
+
+ifstream in("input.txt");
+ofstream out("output.txt");
+
+int main()
+{
+    setlocale(LC_ALL, "Russian");
+    string s;
+    getline(in, s);
+    stack<char> st;
+    for (int i = 0; i < s.size(); i++)
+    {
+        st.push(s[i]);
+    }
+    stack<char>st1, st2;
+    string s1;
+    getline(in, s1);
+    while (!st.empty())
+    {
+        int k = s1.find(st.top());
+        if (s1[k + 1] == '1')
+        {
+            st1.push(s1[k]);
+        }
+        else
+        {
+            st2.push(s1[k]);
+        }
+        st.pop();
+    }
+    while (!st1.empty())
+    {
+        out << st1.top() << ' ';
+        st1.pop();
+    }
+    out << " :1" << endl;
+    while (!st2.empty())
+    {
+        out << st2.top() << ' ';
+        st2.pop();
+    }
+    out << " :2" << endl;
+}
+
+
+4.ОПИСАНИЕ АЛГОРИТМОВ?????
+
+а) последовательный сдвиг каждого до i элемента в начало, а первого в конец
+удобнее использовать список, добавляя первый эл в конец, сдвигая указатель головы правее до i элемента
+это, если нам нужно сдвинуть элементы, помещая в конец, если нет, то просто последовательно сдвигать элементы в начало)
+б) последовательно найти и записать удовлетворяющие условию элементы
+удобнее использовать вектор и метод push_back для записи в новый вектор
+в) поместить элементы в set или в векторе для каждого элемента смотреть, нет ли рядом стоящих таких же, если есть, то сдвигать все элементы циклически влево
+г) поместить элементы в set или если в векторе несколько одинаковых элементов подряд, удалять с помощью erase и remove
+д) последовательно менять каждый элемент в векторе или использовать for_each
+е) последовательно поменять местами с начальными те элементы, которые удовлетворяют условиям, сдвинув все элменты с 1 до нужного вправо
+ж) nth_element
+з) includes  
+и) find/ binary_search
+к) find_if
